@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="navBar.css">
+    <style>
+        body{
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0%;
+        }
+    </style>
+    <title>index</title>
+</head>
+<body>
+        <header>
+
+            <div>
+                <nav id='menu'>
+                <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+                <div>
+                <ul>
+                
+                  <li><a class='dropdown-arrow' href='http://'>Solicitações</a>
+                    <ul class='sub-menus'>
+                      <li><a href='http://'>Nova Solicitação</a></li>
+                      <li><a href='http://'>Consultar Status</a></li>
+                    </ul>
+                  </li>
+                  <li><a class='dropdown-arrow' href='http://'>Cadastro</a>
+                    <ul class='sub-menus'>
+                      <li><a href='registerForm.html'>Prestadores</a></li>
+                      <li><a href='http://'>Clientes</a></li>
+                      <li><a href='http://'>Usuários</a></li>
+                    </ul>
+                  </li>
+                  <li><a href='http://'>Faturamento</a></li>
+                  <li><a class='dropdown-arrow' href='http://'>Relatórios</a>
+                    <ul class='sub-menus'>
+                      <li><a href='http://'>Gerencial Prestadores</a></li>
+                      <li><a href='http://'>Gerencial Clientes</a></li>
+                      <li><a href='http://'>Gerencial Usuários</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                </div>
+            </nav>
+        </div>
+        
+        </header>
+
+        <section id="contentPage">
+
+        </section>
+
+    
+</body>
+<script>
+    const links = document.querySelectorAll('a')
+
+    links.forEach(links =>{
+          
+        console.log("passou")
+
+        links.onclick = (e)=>{
+            e.preventDefault()
+            
+            console.log(e)
+
+            fetch(links.href)
+            .then(resp => resp.text())
+            .then( html => contentPage.innerHTML = html)
+        }
+
+    })
+
+</script>
+<script updateNavBar>
+    
+    function updatemenu() {
+  if (document.getElementById('responsive-menu').checked == true) {
+    document.getElementById('menu').style.borderBottomRightRadius = '0';
+    document.getElementById('menu').style.borderBottomLeftRadius = '0';
+  }else{
+    document.getElementById('menu').style.borderRadius = '10px';
+  }
+    }
+
+</script>
+</html>
